@@ -1,0 +1,308 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "tnum" 1;
+}
+
+h1, h2, h3, .font-display {
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #E8B34D;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #E8B34D;
+  color: #0B0E14;
+  padding: 0.5rem 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  z-index: 100;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Hide scrollbar on the horizontally-scrolling tab bar (mobile) without
+   removing scroll functionality */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* ---------- Editor tabs (desktop nav) ---------- */
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  color: #8A93A6;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+}
+
+.tab:hover {
+  color: #E7E9EE;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tab.is-active,
+.tab[aria-current="page"] {
+  color: #E8B34D;
+  border-bottom-color: #E8B34D;
+  background: rgba(232, 179, 77, 0.06);
+}
+
+.tab-name {
+  color: inherit;
+}
+
+.mobile-tab {
+  display: block;
+  padding: 0.6rem 0.5rem;
+  border-radius: 6px;
+  color: #8A93A6;
+}
+.mobile-tab:hover,
+.mobile-tab.is-active {
+  color: #E8B34D;
+  background: rgba(232, 179, 77, 0.08);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: #E8B34D;
+  color: #0B0E14;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+.btn-primary:hover { background: #F3C874; }
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: transparent;
+  color: #E7E9EE;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 1px solid #232838;
+  border-radius: 8px;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+.btn-secondary:hover { border-color: #E8B34D; color: #E8B34D; }
+
+/* ---------- Section headers ---------- */
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #E8B34D;
+}
+
+.section-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-top: 0.4rem;
+  color: #E7E9EE;
+}
+@media (min-width: 640px) {
+  .section-title { font-size: 2.1rem; }
+}
+
+/* ---------- Skills ---------- */
+
+.skill-group {
+  border: 1px solid #232838;
+  background: #131722;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.skill-group__title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8A93A6;
+  margin-bottom: 0.75rem;
+}
+
+.skill-group__list li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #E7E9EE;
+}
+.skill-group__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #E8B34D;
+}
+.skill-group__list li:last-child { margin-bottom: 0; }
+
+/* ---------- Experience: git-log style rail ---------- */
+
+.commit-row {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+.commit-row--last { padding-bottom: 0; }
+
+.commit-row__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.commit-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #E8B34D;
+  border: 2px solid #0B0E14;
+  box-shadow: 0 0 0 2px #232838;
+  flex-shrink: 0;
+  margin-top: 0.4rem;
+}
+
+.commit-line {
+  width: 2px;
+  flex: 1;
+  background: #232838;
+  margin-top: 4px;
+}
+
+.commit-row__body {
+  padding-bottom: 0.25rem;
+}
+
+/* ---------- Tech chips ---------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #1A1F2C;
+  border: 1px solid #232838;
+  color: #8A93A6;
+}
+
+/* ---------- Project cards ---------- */
+
+.project-card {
+  border: 1px solid #232838;
+  background: #131722;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+.project-card:hover {
+  border-color: #3a4258;
+}
+
+.project-card__thumb {
+  height: 180px;
+  background:
+    repeating-linear-gradient(45deg, #1A1F2C 0, #1A1F2C 10px, #171b26 10px, #171b26 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #232838;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: #8A93A6;
+  transition: color 120ms ease;
+}
+.project-link:hover { color: #E8B34D; }
+
+/* ---------- Contact form ---------- */
+
+.field-label {
+  display: block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: #8A93A6;
+  margin-bottom: 0.4rem;
+}
+
+.field-input {
+  width: 100%;
+  background: #0B0E14;
+  border: 1px solid #232838;
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  color: #E7E9EE;
+}
+.field-input::placeholder { color: #4d5568; }
+.field-input:focus {
+  border-color: #E8B34D;
+  outline: none;
+}
+
+.field-error {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: #F0776C;
+  margin-top: 0.35rem;
+  min-height: 1em;
+}
+
+.field.has-error .field-input {
+  border-color: #F0776C;
+}
